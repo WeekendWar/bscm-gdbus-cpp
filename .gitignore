@@ -49,7 +49,7 @@ obj/
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
-Makefile
+build/Makefile
 
 # IDE files
 .vscode/
