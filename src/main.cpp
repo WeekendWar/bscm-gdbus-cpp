@@ -15,41 +15,38 @@ private:
 
   void print_help()
   {
-    std::cout << "\n=== Bluetooth GATT Client Commands ===" << std::endl;
-    std::cout << "  help                        - Show this help message"
-              << std::endl;
-    std::cout << "  quit/exit                   - Exit the application"
-              << std::endl;
     std::cout
+      << std::endl
+      << "=== Bluetooth GATT Client Commands ===" << std::endl
+      << "  help                        - Show this help message" << std::endl
+      << "  quit/exit                   - Exit the application" << std::endl
+
       << "  power on/off                - Power on/off the Bluetooth adapter"
-      << std::endl;
-    std::cout << "  scan [service_uuid]         - Start scanning for devices "
-                 "(optionally filter by service UUID)"
-              << std::endl;
-    std::cout << "  stop                        - Stop scanning" << std::endl;
-    std::cout << "  list                        - List discovered devices"
-              << std::endl;
-    std::cout
+      << std::endl
+      << "  scan [service_uuid]         - Start scanning for devices"
+      << std::endl
+      << "                                (optionally filter by service UUID)"
+      << std::endl
+      << "  stop                        - Stop scanning" << std::endl
+      << "  list                        - List discovered devices" << std::endl
       << "  connect <address>           - Connect to device by MAC address"
-      << std::endl;
-    std::cout
+      << std::endl
+
       << "  disconnect                  - Disconnect from current device"
-      << std::endl;
-    std::cout << "  services                    - List services and "
-                 "characteristics of connected device"
-              << std::endl;
-    std::cout
+      << std::endl
+      << "  services                    - List services and characteristics"
+         " of connected device"
+      << std::endl
       << "  read <service_uuid> <char_uuid>  - Read characteristic value"
+      << std::endl
+      << "  write <service_uuid> <char_uuid> <hex_data>  - Write to "
+         "characteristic"
+      << std::endl
+      << "  notify <service_uuid> <char_uuid> [on/off]   - "
+         "Enable/disable notifications"
+      << std::endl
+      << "  device                      - Show current device info" << std::endl
       << std::endl;
-    std::cout << "  write <service_uuid> <char_uuid> <hex_data>  - Write to "
-                 "characteristic"
-              << std::endl;
-    std::cout << "  notify <service_uuid> <char_uuid> [on/off]   - "
-                 "Enable/disable notifications"
-              << std::endl;
-    std::cout << "  device                      - Show current device info"
-              << std::endl;
-    std::cout << std::endl;
   }
 
   std::vector<std::string> split_string(const std::string& str, char delimiter)
@@ -297,6 +294,12 @@ public:
       std::string command = args[0];
       std::transform(
         command.begin(), command.end(), command.begin(), ::tolower);
+
+      // print each argument in args
+      for (auto arg : args)
+      {
+        std::cout << "Arg: " << arg << std::endl;
+      }
 
       if (command == "help")
       {
